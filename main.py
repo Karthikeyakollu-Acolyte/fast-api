@@ -29,6 +29,10 @@ def generation(s3_bucket_name: str, user_id: str, doc_id: str, user_query: str):
     print(f"Generating response for {doc_id} from {s3_bucket_name} by user {user_id} with query: {user_query}")
     return {"message": "Generated response", "query": user_query}
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8080)
